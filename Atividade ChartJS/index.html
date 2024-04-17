@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Implementando o ChartJS</title>
+</head>
+
+<body>
+  <div class="background">
+
+    <h1>Atividade - ChartJS</h1>
+
+    <div class="container">
+      <div>
+        <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw"></canvas>
+      </div>
+      <div>
+        <canvas id="myChart2" style="position: relative; height: 40vh; width: 40vw"></canvas>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p style="color: #f5cc00;">Feito por Felipe Ferro Nogueira - 1CCO - SPTECH &copy </p>
+      </div>
+    </div>
+  </div>
+</body> 
+
+</html>
+
+<script>
+const ctx = document.getElementById("myChart");
+const ctx2 = document.getElementById("myChart2");
+
+new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+    datasets: [{
+        label: "Temperatura",
+        data: [20 + 10, 30 - 1, 40 - 12, 50 - 25, 60 - 38, 70 - 47, 90],
+        borderWidth: 2,
+        borderColor: "rgb(0, 153, 180)",
+      },
+      {
+        label: "Umidade",
+        data: [20 + 60, 30 + 52, 40 + 40, 50 + 35, 60 + 20, 70 + 13, 90],
+        borderWidth: 2,
+        borderColor: "#f5cc00",
+      },
+    ],
+  },
+  options: {
+    scales: {
+      x: {
+        ticks: {
+          color: 'white', // Cor dos horários (rótulos no eixo x)
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)', // Cor das linhas do grid no eixo x (branco com opacidade)
+        },
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white', // Cor dos valores à esquerda dos horários (eixo y)
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)', // Cor das linhas do grid no eixo y (branco com opacidade)
+        },
+      },
+    },
+    legend: {
+      labels: {
+        color: 'white', // Cor dos nomes na legenda
+      },
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white' // Cor dos nomes de dataset (Temperatura e Umidade)
+        }
+      }
+    },
+    elements: {
+      point: {
+        backgroundColor: 'white' // Cor dos pontos no gráfico de linha
+      }
+    },
+    layout: {
+      padding: {
+        left: 10,
+        right: 10,
+        top: 10,
+        bottom: 10
+      }
+    }
+  },
+});
+
+new Chart(ctx2, {
+  type: "bar",
+  data: {
+    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+    datasets: [{
+        label: "Temperatura Média",
+        data: [0 + 22, 10 + 14, 20 + 7, 30 - 7, 40 - 20, 50 - 32],
+        borderWidth: 2,
+        borderColor: "rgb(0, 153, 180)",
+      },
+      {
+        label: "Umidade Média",
+        data: [0 + 90, 10 + 79, 20 + 73, 30 + 57, 40 + 48, 50 + 32],
+        borderWidth: 2,
+        borderColor: "#f5cc00",
+      },
+    ],
+  },
+  options: {
+    scales: {
+      x: {
+        ticks: {
+          color: "white", // Cor dos meses (rótulos no eixo x)
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)', // Cor das linhas do grid no eixo x (branco com opacidade)
+        },
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: "white", // Cor dos valores à esquerda dos meses (eixo y)
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)', // Cor das linhas do grid no eixo y (branco com opacidade)
+        },
+      },
+    },
+    legend: {
+      labels: {
+        color: "white", // Cor dos nomes na legenda
+      },
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white' // Cor dos nomes de dataset (Temperatura Média e Umidade Média)
+        }
+      }
+    },
+    layout: {
+      padding: {
+        left: 10,
+        right: 10,
+        top: 10,
+        bottom: 10
+      }
+    }
+  },
+});
+
+  const config = {
+    type: "bar",
+    data: data,
+    options: {},
+  };
+</script>
+
+<script>
+  const myChart = new Chart(document.getElementById("myChart"), config);
+  const myChart2 = new Chart(document.getElementById("myChart2"), config2);
+</script>
